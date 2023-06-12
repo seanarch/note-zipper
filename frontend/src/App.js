@@ -1,17 +1,21 @@
+import { BrowserRouter, Route } from "react-router-dom";
+
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import LandingPage from "./screens/LandingPage/LandingPage";
 import "./App.css";
+import MyNotes from "./screens/MyNotes/MyNotes";
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Header />
       <main>
-        <LandingPage />
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/mynotes" component={MyNotes} />
       </main>
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 
