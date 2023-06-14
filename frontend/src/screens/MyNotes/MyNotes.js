@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
 import { Accordion, Button, Card, Badge } from "react-bootstrap";
-import notes from "../../data/notes";
 import axios from "axios";
 
 const MyNotes = () => {
@@ -31,7 +30,7 @@ const MyNotes = () => {
         </Button>
       </Link>
       {notes.map((note) => (
-        <Accordion>
+        <Accordion key={note._id}>
           <Card style={{ margin: 10 }}>
             <Card.Header style={{ display: "flex" }}>
               <span
