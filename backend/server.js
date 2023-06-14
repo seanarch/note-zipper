@@ -19,6 +19,9 @@ app.get("/api/notes", (req, res) => {
 
 app.use("/api/users", userRoutes);
 
+app.use(notFound);
+app.use(errorHandler);
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server started on PORT ${PORT}`));
