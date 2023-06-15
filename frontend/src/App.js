@@ -5,6 +5,8 @@ import Footer from "./components/Footer/Footer";
 import LandingPage from "./screens/LandingPage/LandingPage";
 import "./App.css";
 import MyNotes from "./screens/MyNotes/MyNotes";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Header />
       <main>
         <Route path="/" exact component={LandingPage} />
+        <Route path="/login" exact component={LoginScreen} />
+        <Route path="/register" exact component={RegisterScreen} />
         <Route path="/mynotes" component={MyNotes} />
       </main>
       <Footer />
