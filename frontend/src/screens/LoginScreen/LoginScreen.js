@@ -4,6 +4,7 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
+import ErrorMessage from "../../components/ErrorMessage";
 import "./LoginScreen.css";
 
 const LoginScreen = () => {
@@ -38,12 +39,14 @@ const LoginScreen = () => {
       setLoading(false);
     } catch (error) {
       setError(error.response.data.message);
+      setLoading(false);
     }
   };
 
   return (
     <MainScreen title="LOGIN">
       <div className="loginContainer">
+        {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {loading && <Loading />}
 
         <Form onSubmit={submitHandler}>
