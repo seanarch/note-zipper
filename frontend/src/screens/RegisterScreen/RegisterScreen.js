@@ -40,12 +40,12 @@ const RegisterScreen = () => {
           config
         );
         setLoading(false);
+        console.log(data);
         localStorage.setItem("userInfo", JSON.stringify(data));
       } catch (error) {
         setError(error.response.data.message);
       }
     }
-    console.log(email);
   };
 
   const postDetails = (pics) => {
@@ -65,7 +65,6 @@ const RegisterScreen = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setPic(data.url.toString());
         })
         .catch((err) => {
