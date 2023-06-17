@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import "./LoginScreen.css";
+import { login } from "../../actions/userActions";
 
 const LoginScreen = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -15,8 +16,16 @@ const LoginScreen = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/mynotes");
+    }
+  }, [history, userInfo]);
+
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    dispatch(login(email, password));
   };
 
   return (

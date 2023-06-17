@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import {
-  Button,
   Form,
   FormControl,
   Navbar,
@@ -9,9 +8,20 @@ import {
   NavDropdown,
   Container,
 } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/userActions";
 
 const Header = () => {
   const history = useHistory();
+
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    history.push("/");
+  };
 
   return (
     <Navbar bg="primary" expand="lg" variant="dark">
@@ -39,13 +49,7 @@ const Header = () => {
               <NavDropdown.Item href="#action/3.1">My Profile</NavDropdown.Item>
 
               <NavDropdown.Divider />
-              <NavDropdown.Item
-                href="#action/3.4"
-                onClick={() => {
-                  localStorage.removeItem("userInfo");
-                  history.push("/");
-                }}
-              >
+              <NavDropdown.Item href="#action/3.4" onClick={logoutHandler}>
                 Log Out
               </NavDropdown.Item>
             </NavDropdown>
