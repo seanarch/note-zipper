@@ -1,16 +1,16 @@
 import {
-  NOTE_LIST_SUCCESS,
-  NOTE_LIST_REQUEST,
-  NOTE_LIST_FAIL,
+  NOTES_LIST_SUCCESS,
+  NOTES_LIST_REQUEST,
+  NOTES_LIST_FAIL,
 } from "../constants/notesConstants";
 
-export const notesRegisterReducer = (state = { notes: [] }, action) => {
+export const notesListReducer = (state = { notes: [] }, action) => {
   switch (action.type) {
-    case NOTE_LIST_REQUEST:
+    case NOTES_LIST_REQUEST:
       return { loading: true };
-    case NOTE_LIST_SUCCESS:
+    case NOTES_LIST_SUCCESS:
       return { loading: false, userInfo: action.payload };
-    case NOTE_LIST_FAIL:
+    case NOTES_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
