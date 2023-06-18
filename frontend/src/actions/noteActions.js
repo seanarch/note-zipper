@@ -10,6 +10,7 @@ export const listNotes = () => async (dispatch, getState) => {
     dispatch({
       type: NOTES_LIST_REQUEST,
     });
+
     const {
       userLogin: { userInfo },
     } = getState();

@@ -3,33 +3,36 @@ import { Link } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
 import { Accordion, Button, Card, Badge } from "react-bootstrap";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { listNotes } from "../../actions/noteActions";
 
 const MyNotes = () => {
-  const [notes, setNotes] = useState([]);
+  // const [notes, setNotes] = useState([]);
+  const dispatch = useDispatch();
+
+  const noteList = useSelector((state) => state.notesList);
+  const { loading, notes, error } = noteList;
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
     }
   };
 
-  const fetchNotes = async () => {
-    const { data } = await axios.get("/api/notes");
-
-    setNotes(data);
-  };
   console.log(notes);
   useEffect(() => {
-    fetchNotes();
-  }, []);
+    dispatch(listNotes());
+  }, [dispatch]);
 
   return (
-    <MainScreen title="Welcome back ...">
+    <MainScreen title={`Welcome Back ${userInfo && userInfo.name}..`}>
       <Link to="createnote">
         <Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
           Create New Note
         </Button>
       </Link>
-      {notes.map((note) => (
+      {notes?.map((note) => (
         <Accordion key={note._id}>
           <Card style={{ margin: 10 }}>
             <Card.Header style={{ display: "flex" }}>

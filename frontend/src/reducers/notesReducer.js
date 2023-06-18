@@ -9,7 +9,7 @@ export const notesListReducer = (state = { notes: [] }, action) => {
     case NOTES_LIST_REQUEST:
       return { loading: true };
     case NOTES_LIST_SUCCESS:
-      return { loading: false, userInfo: action.payload };
+      return { loading: false, notes: action.payload };
     case NOTES_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:
