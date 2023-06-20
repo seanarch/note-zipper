@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import MainScreen from "../../components/MainScreen";
 import { Accordion, Button, Card, Badge } from "react-bootstrap";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { listNotes } from "../../actions/noteActions";
+import Loading from "../../components/Loading";
+import ErrorMessage from "../../components/ErrorMessage";
 
 const MyNotes = () => {
   // const [notes, setNotes] = useState([]);
@@ -20,9 +21,13 @@ const MyNotes = () => {
     }
   };
 
-  console.log(notes);
+  const history = useHistory;
+
   useEffect(() => {
     dispatch(listNotes());
+    if (!userInfo) {
+      history.push("/");
+    }
   }, [dispatch]);
 
   return (
@@ -32,6 +37,8 @@ const MyNotes = () => {
           Create New Note
         </Button>
       </Link>
+      {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+      {loading && <Loading />}
       {notes?.map((note) => (
         <Accordion key={note._id}>
           <Card style={{ margin: 10 }}>
@@ -73,7 +80,9 @@ const MyNotes = () => {
                     Integer posuere erat a ante.{" "}
                   </p>
                   <footer className="blockquote-footer">
-                    <cite title="Source Title">Created On - date</cite>
+                    <cite title="Source Title">
+                      {note.createdAt.substring(0, 10)}
+                    </cite>
                   </footer>
                 </blockquote>
               </Card.Body>
