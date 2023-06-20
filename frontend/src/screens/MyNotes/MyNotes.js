@@ -8,7 +8,6 @@ import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 
 const MyNotes = () => {
-  // const [notes, setNotes] = useState([]);
   const dispatch = useDispatch();
 
   const noteList = useSelector((state) => state.notesList);

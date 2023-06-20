@@ -20,14 +20,15 @@ export const notesListReducer = (state = { notes: [] }, action) => {
   }
 };
 
-export const notesCreateReducer = (state = { notes: [] }, action) => {
+export const notesCreateReducer = (state = {}, action) => {
   switch (action.type) {
     case NOTES_CREATE_REQUEST:
       return { loading: true };
     case NOTES_CREATE_SUCCESS:
-      return { loading: false, notes: action.payload };
+      return { loading: false, success: true };
     case NOTES_CREATE_FAIL:
       return { loading: false, error: action.payload };
+
     default:
       return state;
   }

@@ -45,7 +45,9 @@ export const listNotes = () => async (dispatch, getState) => {
 export const createNoteAction =
   (title, content, category) => async (dispatch, getState) => {
     try {
-      dispatch({ type: NOTES_CREATE_REQUEST });
+      dispatch({
+        type: NOTES_CREATE_REQUEST,
+      });
 
       const {
         userLogin: { userInfo },
@@ -57,6 +59,7 @@ export const createNoteAction =
           Authorization: `Bearer ${userInfo.token}`,
         },
       };
+
       const { data } = await axios.post(
         `/api/notes/create`,
         { title, content, category },
@@ -74,6 +77,7 @@ export const createNoteAction =
           : error.message;
       dispatch({
         type: NOTES_CREATE_FAIL,
+        payload: message,
       });
     }
   };

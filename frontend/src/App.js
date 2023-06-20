@@ -7,6 +7,7 @@ import "./App.css";
 import MyNotes from "./screens/MyNotes/MyNotes";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
+import CreateNote from "./screens/CreateNote/CreateNote";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" exact component={LandingPage} />
         <Route path="/login" exact component={LoginScreen} />
         <Route path="/register" exact component={RegisterScreen} />
+        <Route path="/createnote" component={CreateNote} />
         <Route path="/mynotes" component={MyNotes} />
       </main>
       <Footer />
