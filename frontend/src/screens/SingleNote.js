@@ -3,7 +3,7 @@ import MainScreen from "../components/MainScreen";
 import axios from "axios";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { updateNoteAction } from "../actions/noteActions";
+import { updateNoteAction, deleteNoteAction } from "../actions/noteActions";
 import ErrorMessage from "../components/ErrorMessage";
 import Loading from "../components/Loading";
 import ReactMarkdown from "react-markdown";
@@ -16,10 +16,10 @@ function SingleNote({ match, history }) {
 
   const dispatch = useDispatch();
 
-  const noteUpdate = useSelector((state) => state.noteUpdate);
+  const noteUpdate = useSelector((state) => state.notesUpdate);
   const { loading, error } = noteUpdate;
 
-  const noteDelete = useSelector((state) => state.noteDelete);
+  const noteDelete = useSelector((state) => state.notesDelete);
   const { loading: loadingDelete, error: errorDelete } = noteDelete;
 
   const deleteHandler = (id) => {

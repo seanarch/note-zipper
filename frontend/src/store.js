@@ -4,6 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducer";
 import {
   notesCreateReducer,
+  notesDeleteReducer,
   notesListReducer,
   notesUpdateReducer,
 } from "./reducers/notesReducer";
@@ -14,7 +15,8 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   notesList: notesListReducer,
   notesCreate: notesCreateReducer,
-  noteUpdate: notesUpdateReducer,
+  notesUpdate: notesUpdateReducer,
+  notesDelete: notesDeleteReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
