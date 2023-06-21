@@ -4,6 +4,7 @@ const {
   authUser,
   updateUserProfile,
 } = require("../controllers/userControllers");
+const { protect } = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
