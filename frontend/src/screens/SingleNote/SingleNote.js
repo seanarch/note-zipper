@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import MainScreen from "../components/MainScreen";
+import MainScreen from "../../components/MainScreen";
 import axios from "axios";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { updateNoteAction, deleteNoteAction } from "../actions/noteActions";
-import ErrorMessage from "../components/ErrorMessage";
-import Loading from "../components/Loading";
+import { updateNoteAction, deleteNoteAction } from "../../actions/noteActions";
+import ErrorMessage from "../../components/ErrorMessage";
+import Loading from "../../components/Loading";
 import ReactMarkdown from "react-markdown";
 
 function SingleNote({ match, history }) {
